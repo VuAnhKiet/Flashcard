@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+@import 'styles/CreateBox.css';
+@import 'styles/Cards.css';
+@import 'styles/Buttons.css';
+@import 'styles/SetofCards.css';
+@import 'styles/Login.css';
+@import'styles/Registration';
+body{
+    font-family: 'Mulish', sans-serif;
+    background: #f0f0f0;
+    background-repeat: no-repeat;
+    height: 100vh;
+    
+}
+header{
+    background: white;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.word{
+  border-top: 1px solid red;
+  padding: 15px;
+  margin-top: 30px;
+}
+
+.defination{
+  color: red;
+  text-align: center;
+  border-top: 1px solid red;
+  padding: 15px;
+  margin-top: 30px
+}
+
+.container{
+    width: 95%;
+    /* margin:auto; */
+    margin: 0;
+    background: white;
+    width: 100%;
+    
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+    margin: auto;
+}
+
+@media(max-width:520px){
+    .create-box{
+        width: 300px;
+        height: max-content;
+    }
+    
+    .flashcard{
+        width: 280px;
+        height: 180px;
+    }
+}
+
+@media(max-width:355px){
+    .nav{
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .create-box{
+        width: 200px;
+    }
+
+    .flashcard{
+        width: 190px;
+        height: 100px;
+    }
+}
+
+h2{
+    text-align: center;
+}
+h1{
+    padding-left: 30px;
+    padding-top: 4px;
+}
+
+.input{
+    width: 100%;
+    border-radius: 5px;
+    font-family: inherit;
+    border: 1px solid lightgrey;
+    padding-top: 10px;
+    padding-left: 3px;
+}
+span{
+    color:red;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+

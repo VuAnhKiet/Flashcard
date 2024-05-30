@@ -1,0 +1,11 @@
+.span{
+    color: red;
+    float: left;
+    
+}
+.reglabel{
+    color: #555;
+    font-weight: bold;
+    text-align: left;
+    float: left;
+}
