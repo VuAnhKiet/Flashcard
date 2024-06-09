@@ -23,3 +23,39 @@ button:hover{
     padding-top: 8px;
     padding-right: 8px;
 }
+
+.delete{
+    float: right;
+    margin:0;
+    padding: 0;
+    overflow: auto;
+    font-weight: bold;
+    color:red;
+    border-style:solid;
+}
+
+.deletesetcard{
+    float: right;
+    margin:2px;
+    padding: 0;
+    overflow: visible;
+    font-weight: bold;
+    color:red;
+    /* border-style:solid; */
+}
+
+
+.editcard{
+    margin-top: 80px;
+    float: right;
+    background-color:rgb(230, 227, 227);
+}
+
+.editsetcards{
+    margin-left: 5px;
+    padding: 2px;
+    border: 0px;
+}
+
+
+

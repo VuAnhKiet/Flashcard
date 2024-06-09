@@ -1,18 +1,37 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import React from 'react'
+import React, { useContext } from 'react'
 import * as Yup from "yup";
 import axios from "axios";
-import SetCard from "../component/setOfcards/setofcard";
+import SetCard from "../component/setOfcards/setofcardlist";
 import { useEffect, useState } from "react";
+import AuthContext from "../AuthContext";
 function CreateSetCard() {
     const [Cardstheme, SetCardstheme] = useState([]);
+    const {auth,Setauth}=useContext(AuthContext);  
     useEffect(() => {
-        axios.get(`http://localhost:3001/setcard`).then((res) => {
+        if (auth){
+        axios.get(`http://localhost:3001/setcard`,{
+            headers: { accessToken: localStorage.getItem("accessToken") }
+        }).then((res) => {
             SetCardstheme(res.data);
         }).catch((err) => {
-            console.log(err);
-        });
-    }, []);
+            console.log(err);   
+        });}
+    }, [auth]);
+
+    const del=(e,id)=>{
+        e.stopPropagation();
+        axios.delete(`http://localhost:3001/setcard/${id}`,{
+            headers:{
+                accessToken:localStorage.getItem('accessToken'),
+            }
+        }).then(()=>{
+            SetCardstheme(Cardstheme.filter((val)=>{
+                return val.id!=id;
+            }))
+        })
+    }
+    
     const initialValues = {
         name: "",
     };
@@ -21,17 +40,18 @@ function CreateSetCard() {
     });
 
     const onSubmit = (data, { resetForm }) => {
-        axios.post("http://localhost:3001/setcard", data).then((response) => {
-            // if(response.data.error){
-            //     console.log(response.data.error)
-            // } else{
+        axios.post("http://localhost:3001/setcard", data,{
+            headers: { accessToken: localStorage.getItem("accessToken") }
+        }).then((response) => {
+            if(response.data.error){
+                console.log(response.data.error)
+                alert('Please login to continue!')
+            } else{
             console.log(response.data);
             SetCardstheme([...Cardstheme, response.data])
-        });
+            // window.location.reload(true);
+        }});
         resetForm();
-        window.location.reload(true);
-
-
     };
     return (
         <div className="">
@@ -54,10 +74,8 @@ function CreateSetCard() {
                     </Form>
                 </Formik>
             </div>
-            <SetCard Cardstheme={Cardstheme} />
+            <SetCard Cardstheme={Cardstheme} del={del} auth={auth}/>
         </div>
-
-
     );
 }
 

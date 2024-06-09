@@ -3,9 +3,10 @@ const router = Router();
 import { User } from '../models/User.js';
 import bcrypt from 'bcrypt';
 import jsonwebtoken  from 'jsonwebtoken';
-router.get("/", async (req, res) => {
-    const listOfUsers = await User.findAll();
-    res.json(listOfUsers);
+import {validateToken} from '../middlewares/authMiddleware.js'
+
+router.get("/",validateToken, async (req, res) => {
+    res.json(req.user);
 });
 
 router.post("/", async (req, res) => {

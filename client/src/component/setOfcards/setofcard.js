@@ -1,25 +1,24 @@
-import React from 'react'
-import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-function SetCard({ Cardstheme }) {
-  let navigate = useNavigate();
-
-  return (
-    <div>
-      {
-        Cardstheme.map((value, key) => {
-          return (
-            <div className='setofcards'>
-              <ul>
-                <li key={value.id} onClick={() => { navigate(`/setofcards/${value.id}`) }}>{value.name}</li>
-              </ul>
-            </div>
-          );
-        })
-      }
-    </div>
-  );
+import EditSetCards from '../../pages/EditSetCards';
+function Set({ value, del, key }) {
+    const [hideset, setHideset] = useState(true);
+    let navigate = useNavigate();
+    const [newname, SetNewname] = useState(value.name)
+    return (
+        <div className='setofcards'>
+            <ul className='display'>
+                <button className='deletesetcard' onClick={(e) => { del(e, value.id) }}>
+                    X
+                </button>
+                {hideset ? (
+                    <li key={value.id} onClick={() => { navigate(`/setofcards/${value.id}`); }}>
+                        {newname}
+                        <button className='editsetcards' onClick={(e) => { e.stopPropagation(); setHideset(!hideset); }}>{hideset ? <>&#128393;</> : null}</button>
+                    </li>) : <EditSetCards name={newname} id={value.id} hide={hideset} setHide={setHideset} setName={SetNewname} />}
+            </ul>
+        </div>
+    )
 }
 
-export default SetCard
+export default Set

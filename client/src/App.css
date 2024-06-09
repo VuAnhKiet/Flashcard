@@ -5,6 +5,8 @@
 @import 'styles/SetofCards.css';
 @import 'styles/Login.css';
 @import'styles/Registration';
+@import'styles/Edit.css';
+@import'styles/PageNotFound.css';
 body{
     font-family: 'Mulish', sans-serif;
     background: #f0f0f0;
