@@ -5,9 +5,7 @@ function Flashcard({ card,del,edit,setlistcards }) {
     const [hide,setHide]=useState(true);
     const [newword,SetNewword]=useState(card.word);
     const [newdef,SetNewdef]=useState(card.defination);
-    // const handleChange=()=>{
-    //     setHide(!)
-    // }
+
     return (
         <div className='flashcard'onClick={() => { setFlip(!flip) }}>
             <button className='delete' onClick={(e)=>{del(e,card.id)}}>
@@ -19,7 +17,6 @@ function Flashcard({ card,del,edit,setlistcards }) {
                 <EditCard onClick={(e)=>{e.stopPropagation();}} word={newword} id={card.id} defination={newdef} state={hide} setword={SetNewword} setdef={SetNewdef} setState={setHide}/>
             }
             <button className='editcard' onClick={(e)=>{edit(e,card.id);setHide(!hide);}}>{hide?<>Edit</>:null}
-                
             </button>
         </div>
     );

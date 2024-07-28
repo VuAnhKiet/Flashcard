@@ -7,10 +7,11 @@ function EditSetCards({ name, id, hide, setHide, setName }) {
     const initialValues = {
         name:name
     };
-    // const [newname,SetNewname]=useState(name)
+
     const validationSchema = Yup.object().shape({
         name: Yup.string().required("You must input a name"),
     });
+    
     const onSubmit = (data, { resetForm }) => {
         axios.put("http://localhost:3001/setcard", {name:data.name,id:id},{
             headers: { accessToken: localStorage.getItem("accessToken") }
@@ -21,9 +22,6 @@ function EditSetCards({ name, id, hide, setHide, setName }) {
             } else{
                 setName(data.name);
                 setHide(!hide);
-            // console.log(response.data);
-            
-            // window.location.reload(true);
         }});
         resetForm();
     };

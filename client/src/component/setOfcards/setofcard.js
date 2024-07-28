@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import EditSetCards from '../../pages/EditSetCards';
+
 function Set({ value, del, key }) {
     const [hideset, setHideset] = useState(true);
     let navigate = useNavigate();

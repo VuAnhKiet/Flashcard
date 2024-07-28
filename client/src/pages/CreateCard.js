@@ -5,28 +5,32 @@ import axios from "axios";
 import Card from "../component/flashcard/cardBaseonId";
 import { useParams } from 'react-router-dom';
 import AuthContext from "../AuthContext";
+
 function CreateCard() {
     const [addNewCard, SetaddNewCard] = useState([]);
     const [ListOfCards, SetListOfCards] = useState([]);
     const {auth,Setauth}=useContext(AuthContext);  
     let { id } = useParams();
+
     useEffect(() => {
         if(auth){
         axios.get(`http://localhost:3001/setcard/byId/${id}`).then((res) => {
-            SetListOfCards(res.data);
-            
+            SetListOfCards(res.data);       
         }).catch((err) => {
             console.log(err);
         });}
     }, [auth]);
+
     const initialValues = {
         word: "",
         defination: "",
     };
+
     const validationSchema = Yup.object().shape({
         word: Yup.string().required("You must input a word"),
         defination: Yup.string().min(3).max(15).required("You must input a defination"),
     });
+
     const del=(e,id)=>{
         e.stopPropagation();
         axios.delete(`http://localhost:3001/card/${id}`,{
@@ -39,9 +43,11 @@ function CreateCard() {
             }))
         })
     }
+
     const edit=(e,id)=>{
         e.stopPropagation();
     }
+
     const onSubmit = (data, { resetForm }) => {
         axios.post("http://localhost:3001/card", { word: data.word, defination: data.defination, groupCardId: id },
             {
@@ -57,7 +63,6 @@ function CreateCard() {
             });
         resetForm();
     };
-
     return (
         <div className="">
             <div className="create-box">
@@ -66,7 +71,6 @@ function CreateCard() {
                     initialValues={initialValues}
                     onSubmit={onSubmit}
                     validationSchema={validationSchema}
-
                 >{({ handleChange, setFieldValue }) => (
                     <Form>
                         <label>Word: </label>
@@ -75,9 +79,7 @@ function CreateCard() {
                             autoComplete="off"
                             id="input"
                             name="word"
-                            // onChange={(event) => { SetnewWord(event.target.value)}}
                             onChange={e => setFieldValue('word', e.target.value)}
-
                         />
                         <label>Defination: </label>
                         <ErrorMessage name="defination" component="span" />

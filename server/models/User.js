@@ -1,7 +1,6 @@
-import { DataTypes } from "sequelize";
-import { sequelize as sq } from "../utils/db.js";
 import { Group_card } from "./Group_card.js";
 import { Friend } from "./Friend.js";
+import { sequelize as sq, DataTypes} from "../config/database.js";
     export const User = sq.define("User", {
         id: {
             type: DataTypes.INTEGER,

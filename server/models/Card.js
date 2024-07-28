@@ -1,5 +1,4 @@
-import { DataTypes } from "sequelize";
-import { sequelize as sq } from "../utils/db.js";
+import { sequelize as sq, DataTypes} from "../config/database.js";
     export const Card = sq.define("Card", {
         id: {
             type: DataTypes.INTEGER,

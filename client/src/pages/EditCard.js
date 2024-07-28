@@ -3,16 +3,16 @@ import * as Yup from "yup";
 import axios from "axios";
 
 function EditCard({word, id, defination, state, setState, setdef,setword}) {
-    // const [cardEdit,SetCardEdit]=useState({word,defination});
-
     const initialValues = {
         word: word,
         defination: defination,
     };
+
     const validationSchema = Yup.object().shape({
         word: Yup.string().required("You must input a word"),
         defination: Yup.string().min(3).max(15).required("You must input a defination"),
     });
+
     const onSubmit = (data, { resetForm }) => {
         axios.put("http://localhost:3001/card", { word: data.word, defination: data.defination, id: id },
             {
@@ -25,11 +25,9 @@ function EditCard({word, id, defination, state, setState, setdef,setword}) {
                     setdef(data.defination);
                     setword(data.word);
                     setState(!state);
-                    // window.location.reload(true);
                 }
             });
         resetForm();
-
     };
     return (
         <div className="">
@@ -48,9 +46,7 @@ function EditCard({word, id, defination, state, setState, setdef,setword}) {
                             autoComplete="off"
                             id="input"
                             name="word"
-                            // onChange={(event) => { SetnewWord(event.target.value)}}
                             onChange={e => setFieldValue('word', e.target.value)}
-
                         />
                         <label>Defination: </label>
                         <ErrorMessage name="defination" component="span" />
@@ -62,7 +58,6 @@ function EditCard({word, id, defination, state, setState, setdef,setword}) {
                         />
                         <button type="submit" onClick={(e) => { e.stopPropagation(); setState(!state); }}>Close</button>
                         <button className="save" type="submit" onClick={(e) => { e.stopPropagation(); }}>Save</button>
-
                     </Form>)}
                 </Formik>
             </div>

@@ -1,6 +1,5 @@
-import { DataTypes } from "sequelize";
-import { sequelize as sq } from "../utils/db.js";
 import { Card } from "./Card.js";
+import { sequelize as sq, DataTypes} from "../config/database.js";
 export const Group_card = sq.define("Group_card", {
     id: {
         type: DataTypes.INTEGER,

@@ -1,4 +1,5 @@
 import Flashcard from "./flashcard";
+
 function Flashcardlist ({flashcards,del,edit,setlistcards}){  
     return(
       <div className="flashcards">
@@ -11,4 +12,4 @@ function Flashcardlist ({flashcards,del,edit,setlistcards}){
     )
   }
   
-  export default Flashcardlist;
+export default Flashcardlist;

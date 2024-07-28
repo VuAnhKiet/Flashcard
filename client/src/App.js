@@ -10,6 +10,7 @@ import { useState,useEffect } from 'react';
 import axios from 'axios';
 import PageNotFound from './pages/PageNotFound';
 import {Navigate} from 'react-router-dom';
+import Friends from './pages/Friends';
 
 function App() {
   const [auth,Setauth]=useState(false);
@@ -36,7 +37,9 @@ function App() {
       <Router>
         <div className='container'>
           <div className='nav'>
+            <a className='homebtn' href='/'>
             <h1>Flashcards</h1>
+            </a>
             <div className='buttonss'>
               <button>
                 <Link style={{ textDecoration: 'none' }}to='/'>Home</Link>
@@ -56,6 +59,7 @@ function App() {
           <Route path='/setofcards/:id' element={auth?<CreateCard/>:<Navigate to="/"/>}/>
           <Route path='/login' element={auth?<Navigate to="/"/>:<Login/>}/>
           <Route path='/registration' element={auth?<Navigate to="/"/>:<Registration/>}/>
+          <Route path='/friends' element={<Friends />} />
           <Route path="*" element={<PageNotFound/>}/>
         </Routes>
       </Router>
