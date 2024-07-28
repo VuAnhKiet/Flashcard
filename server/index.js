@@ -1,5 +1,6 @@
 import express from 'express';
 const app=express();
+
 import { sequelize } from './config/database.js';
 import {userRouter} from "./routes/users.js";
 import {cardRouter} from "./routes/card.js";
