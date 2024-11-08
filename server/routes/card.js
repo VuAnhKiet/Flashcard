@@ -1,14 +1,23 @@
 import { validateToken } from '../middlewares/authMiddleware.js';
-import { getlistCard,createCard,deleteCard,updateCard } from '../controller/cardController.js';
 import { Router } from 'express';
-const router=Router();
+import {
+    getlistCard,
+    createCard,
+    deleteCard,
+    updateCard,
+    searchCard
+} from '../controller/cardController.js';
 
-router.get("/",validateToken, getlistCard);
+const router = Router();
 
-router.post("/",validateToken,createCard );
+router.get("/", validateToken, getlistCard);
 
-router.delete("/:cardId",validateToken,deleteCard )
+router.get("/search", searchCard)
 
-router.put("/",validateToken,updateCard)
+router.post("/", validateToken, createCard);
 
-export {router as cardRouter};
+router.delete("/:cardId", validateToken, deleteCard)
+
+router.put("/", validateToken, updateCard)
+
+export { router as cardRouter };

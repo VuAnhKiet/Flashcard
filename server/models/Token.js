@@ -1,18 +1,21 @@
 import { sequelize as sq, DataTypes } from "../config/database.js";
-export const Card = sq.define("Card", {
+
+export const Token = sq.define("Token", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    word: {
+    token: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
     },
-    definition: {
-        type: DataTypes.STRING,
-        allowNull: false
+    expiresAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
     },
+},
+);
 
-})
 

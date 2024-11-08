@@ -1,23 +1,27 @@
 import express from 'express';
-const app=express();
+const app = express();
 
 import { sequelize } from './config/database.js';
-import {userRouter} from "./routes/users.js";
-import {cardRouter} from "./routes/card.js";
-import { SetcardRouter } from './routes/setcards.js';
+import { userRouter } from "./routes/users.js";
+import { cardRouter } from "./routes/card.js";
+import { groupCardRouter } from './routes/groupcards.js';
+import { shareCardsRouter } from './routes/sharesection.js';
 import cors from 'cors';
+
+const PORT = process.env.PORT || 3001;
 
 app.use(express.json())
 app.use(cors())
-app.use("/auth",userRouter);
-app.use("/card",cardRouter)
-app.use("/setcard",SetcardRouter)
+app.use("/auth", userRouter);
+app.use("/card", cardRouter);
+app.use("/setcard", groupCardRouter);
+app.use("/share", shareCardsRouter)
 
 sequelize.sync()
-.then(result => {
-  app.listen(3001);
-})
-.catch(err => {
-  console.log(err);
-});
+  .then(result => {
+    app.listen(PORT);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 

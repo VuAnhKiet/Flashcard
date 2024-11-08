@@ -8,7 +8,7 @@ const config = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: 'postgres',
-    port: process.env.DB_PORT||5432,
+    port: process.env.DB_PORT || 5432,
   },
   test: {
     username: process.env.DB_USER,
@@ -16,7 +16,7 @@ const config = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: 'postgres',
-    port: process.env.DB_PORT||5432,
+    port: process.env.DB_PORT || 5432,
   },
   production: {
     username: process.env.DB_USER,
@@ -24,7 +24,7 @@ const config = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: 'postgres',
-    port: process.env.DB_PORT||5432,
+    port: process.env.DB_PORT || 5432,
   },
 };
 
