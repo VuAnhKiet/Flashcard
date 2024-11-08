@@ -1,0 +1,124 @@
+.
+├── docker-compose.yml
+├── README.md
+├── client/
+│   ├── .dockerignore
+│   ├── .env
+│   ├── Dockerfile.dev
+│   ├── package.json
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   └── src/
+│       ├── App.css
+│       ├── App.js
+│       ├── AuthContext.js
+│       ├── index.js
+│       ├── reportWebVitals.js
+│       ├── component/
+│       │   ├── card/
+│       │   │   ├── Card.js
+│       │   │   ├── CardList.js
+│       │   │   ├── CardsById.js
+│       │   │   ├── CreateCard.js
+│       │   │   ├── EditCard.js
+│       │   │   └── SearchCard.js
+│       │   ├── friends/
+│       │   │   ├── Friend.js
+│       │   │   ├── FriendList.js
+│       │   │   ├── FriendProfile.js
+│       │   │   ├── FriendRequest.js
+│       │   │   ├── FriendRequestList.js
+│       │   │   └── SearchFriend.js
+│       │   ├── modal/
+│       │   │   └── Modal.js
+│       │   ├── setcard/
+│       │   │   ├── CreateSetCard.js
+│       │   │   ├── EditSetCards.js
+│       │   │   ├── SearchSetCard.js
+│       │   │   ├── SetCard.js
+│       │   │   └── SetCardList.js
+│       │   └── share-section/
+│       │       └── ShareSection.js
+│       ├── hooks/
+│       │   ├── useCards.js
+│       │   ├── useFriendSearch.js
+│       │   ├── useFriendsReq.js
+│       │   ├── useSetCards.js
+│       │   ├── useShareCards.js
+│       │   └── useUser.js
+│       ├── pages/
+│       │   ├── ForgotPassword.js
+│       │   ├── Friends.js
+│       │   ├── Home.js
+│       │   ├── Login.js
+│       │   ├── NavBar.js
+│       │   ├── PageNotFound.js
+│       │   ├── Profile.js
+│       │   ├── Registration.js
+│       │   └── ResetPassword.js
+│       ├── services/
+│       │   ├── api.js
+│       │   ├── cardService.js
+│       │   ├── friendService.js
+│       │   ├── setcardService.js
+│       │   ├── shareCardService.js
+│       │   └── userService.js
+│       └── styles/
+│           ├── Button/
+│           │   └── Buttons.css
+│           ├── Card/
+│           │   └── Cards.css
+│           ├── Form/
+│           │   ├── CreateBox.css
+│           │   ├── Edit.css
+│           │   ├── ForgotPassword.css
+│           │   ├── Login.css
+│           │   ├── Registration.css
+│           │   └── SearchBar.css
+│           ├── Friend/
+│           │   ├── FriendList.css
+│           │   ├── FriendProfile.css
+│           │   └── FriendsSearch.css
+│           ├── PopUp/
+│           │   ├── Modal.css
+│           │   ├── NoResult.css
+│           │   └── PageNotFound.css
+│           └── Setcard/
+│               ├── SetofCards.css
+│               └── ShareSection.css
+└── server/
+    ├── .dockerignore
+    ├── .env
+    ├── Dockerfile
+    ├── index.js
+    ├── package.json
+    ├── config/
+    │   ├── config.js
+    │   ├── database.js
+    │   └── seeder.js
+    ├── controller/
+    │   ├── cardController.js
+    │   ├── groupCardsController.js
+    │   ├── shareCardController.js
+    │   └── userController.js
+    ├── middlewares/
+    │   └── authMiddleware.js
+    ├── models/
+    │   ├── Card.js
+    │   ├── Friend_request.js
+    │   ├── Group_card.js
+    │   ├── Share_section.js
+    │   ├── Token.js
+    │   └── User.js
+    ├── routes/
+    │   ├── card.js
+    │   ├── groupcards.js
+    │   ├── sharesection.js
+    │   └── users.js
+    └── utils/
+        └── mailer.js
