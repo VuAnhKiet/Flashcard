@@ -9,9 +9,18 @@ import { shareCardsRouter } from './routes/sharesection.js';
 import cors from 'cors';
 
 const PORT = process.env.PORT || 3001;
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,  // Allow only your front-end
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allow only specific methods
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Allow specific headers
+};
 
-app.use(express.json())
-app.use(cors())
+app.get('/', (req, res) => {
+  res.send('Welcome to the backend API!');
+});
+
+app.use(cors(corsOptions));
+app.use(express.json());
 app.use("/auth", userRouter);
 app.use("/card", cardRouter);
 app.use("/setcard", groupCardRouter);
