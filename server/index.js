@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.options("*", cors(corsConfig));
+app.options("*", cors(corsOptions));
 
 app.use("/auth", userRouter);
 app.use("/card", cardRouter);
