@@ -12,7 +12,6 @@ A user-friendly flashcard web that lets you create, organize, and study cards wi
 6. [Running the Application](#running-the-application)
 
 
----
 
 ## Project Overview
 
@@ -25,7 +24,6 @@ This project allows users to register, log in, and manage their cards and sets. 
 - **Search Functionality**: Search and filter both individual cards and card sets for quick access.
 - **Friend Management**: Add and search for friends, as well as view and share cards with them.
 
----
 
 ## Technologies Used
 
@@ -36,11 +34,10 @@ This project allows users to register, log in, and manage their cards and sets. 
 - **JWT**
 - **Nodemailer**
 
----
 
 ## Modeling
 
-![](./Diagram)
+![](./doc/Diagram.png)
 
 ## Setup
 
