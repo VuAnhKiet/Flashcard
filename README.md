@@ -80,6 +80,8 @@ Place this in:
 ```bash
 PORT=3001
 
+FRONTEND_URL="your_frontend_url"
+
 DB_PORT=5432
 DB_HOST='localhost'
 DB_NAME='your_database_name'
