@@ -10,9 +10,10 @@ import cors from 'cors';
 
 const PORT = process.env.PORT || 3001;
 const corsOptions = {
-  origin: process.env.FRONTEND_URL,  // Allow only your front-end
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allow only specific methods
-  allowedHeaders: ['Content-Type', 'Authorization'],  // Allow specific headers
+  origin: process.env.FRONTEND_URL,  
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'], 
 };
 
 app.get('/', (req, res) => {
@@ -21,6 +22,8 @@ app.get('/', (req, res) => {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.options("*", cors(corsConfig));
+
 app.use("/auth", userRouter);
 app.use("/card", cardRouter);
 app.use("/setcard", groupCardRouter);
