@@ -1,0 +1,119 @@
+/* Modal-like Background */
+.profile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8); /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    width: 100%; /* Full screen width */
+    height: 100%; /* Full screen height */
+    overflow: hidden; /* Hide the scrollbar on the parent */
+}
+
+/* Profile Container */
+.profile-container {
+    width: 350px; /* Smaller fixed width */
+    height: 400px; /* Smaller fixed height */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow-y: auto; /* Allow scrolling if content exceeds the height */
+    z-index: 1001;
+}
+
+/* Profile Header */
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Back Button */
+.back-button {
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Flashcard Group */
+.flashcard-group {
+    margin-top: 10px;
+    max-height: 300px; /* Set max height */
+    overflow-y: auto; /* Enable scrolling for the flashcard list */
+    padding: 10px;
+    border-top: 2px solid #007bff;
+    scrollbar-width: thin; /* Thin scrollbar for Firefox */
+    scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1); /* Custom scrollbar color for Firefox */
+}
+
+.flashcard-group p {
+    text-align: center;
+}
+
+/* WebKit Scrollbars Styling */
+.flashcard-group::-webkit-scrollbar {
+    width: 8px; /* Set width of the scrollbar */
+}
+
+.flashcard-group::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track (background) color */
+    border-radius: 5px;
+}
+
+.flashcard-group::-webkit-scrollbar-thumb {
+    background: #888; /* Thumb (draggable part) color */
+    border-radius: 5px;
+}
+
+.flashcard-group::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Thumb color when hovering */
+}
+
+.profile-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Flashcard Styles */
+.share-card {
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    text-align: center;
+    background-color: #f9f9f9;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.share-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Show answer */
+.share-card p {
+    margin: 5px 0 0 0;
+    text-align: center;
+    font-weight: bold;
+    color: red; /* Color for the answer */
+}

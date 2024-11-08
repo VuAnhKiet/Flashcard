@@ -1,101 +1,139 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
-@import 'styles/CreateBox.css';
-@import 'styles/Cards.css';
-@import 'styles/Buttons.css';
-@import 'styles/SetofCards.css';
-@import 'styles/Login.css';
-@import'styles/Registration';
-@import'styles/Edit.css';
-@import'styles/PageNotFound.css';
-@import'styles/FriendReq.css';
-body{
+
+/* Form Styles */
+@import 'styles/Form/CreateBox.css';
+@import 'styles/Form/Login.css';
+@import 'styles/Form/Registration.css';
+@import 'styles/Form/Edit.css';
+@import 'styles/Form/SearchBar.css';
+@import 'styles/Form/ForgotPassword.css';
+
+/* Card and Setcard Styles */
+@import 'styles/Card/Cards.css';
+@import 'styles/Setcard/SetofCards.css';
+@import 'styles/Setcard/ShareSection.css';
+
+/* Button Styles */
+@import 'styles/Button/Buttons.css';
+
+/* Pop-up Styles */
+@import 'styles/PopUp/PageNotFound.css';
+@import 'styles/PopUp/NoResult.css';
+@import 'styles/PopUp/Modal.css';
+
+/* Friend Styles */
+@import 'styles/Friend/FriendList.css';
+@import 'styles/Friend/FriendsSearch.css';
+@import 'styles/Friend/FriendProfile.css';
+
+
+body {
     font-family: 'Mulish', sans-serif;
-    background: #f0f0f0;
+    background: linear-gradient(to right, #a2c2e8, #d9e8c7);
     background-repeat: no-repeat;
     height: 100vh;
-    
 }
-header{
+
+header {
     background: white;
 }
-*{
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-
-.word{
-  border-top: 1px solid red;
-  padding: 15px;
-  margin-top: 30px;
-}
-
-.defination{
-  color: red;
-  text-align: center;
-  border-top: 1px solid red;
-  padding: 15px;
-  margin-top: 30px
-}
-
-.container{
+.container {
     width: 95%;
-    /* margin:auto; */
     margin: 0;
     background: white;
     width: 100%;
-    
 }
-.nav{
+
+.nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 8vh;
-    margin: auto;
+    padding: 15px 20px;
+    background: linear-gradient(to right, #3a7bd5, #fdd835);
+    padding-top: 20px;
+    padding-bottom: 25px;
 }
 
-@media(max-width:520px){
-    .create-box{
-        width: 300px;
-        height: max-content;
-    }
-    
-    .flashcard{
-        width: 280px;
-        height: 180px;
-    }
+.homebtn h1 {
+    color: white;
+    margin: 0;
+    font-size: 24px;
 }
 
-@media(max-width:355px){
-    .nav{
-        justify-content: center;
+.buttonss {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.navbut {
+    background-color: white;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.navbut:hover {
+    background-color: #f1f1f1;
+}
+
+.navbut a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbut:focus {
+    outline: none;
+}
+
+@media (max-width: 520px) {
+    .nav {
         flex-direction: column;
-        text-align: center;
+        align-items: center;
     }
 
-    .create-box{
-        width: 200px;
-    }
-
-    .flashcard{
-        width: 190px;
-        height: 100px;
+    .buttonss {
+        flex-direction: column;
+        gap: 5px;
     }
 }
 
-h2{
+@media (max-width: 355px) {
+    .homebtn h1 {
+        font-size: 20px;
+    }
+
+    .navbut {
+        width: 100%;
+    }
+}
+
+h2 {
     text-align: center;
 }
-h1{
+
+h1 {
     padding-left: 30px;
     padding-top: 4px;
 }
-.homebtn{
+
+.homebtn {
     text-decoration: none;
     color: black;
 }
 
-.input{
+.input {
     width: 100%;
     border-radius: 5px;
     font-family: inherit;
@@ -103,13 +141,12 @@ h1{
     padding-top: 10px;
     padding-left: 3px;
 }
-span{
-    color:red;
+
+span {
+    color: red;
 }
 
 * {
     margin: 0;
     padding: 0;
 }
-
-

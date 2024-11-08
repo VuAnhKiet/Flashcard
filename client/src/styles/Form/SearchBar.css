@@ -1,0 +1,12 @@
+#mySearch {
+  width: auto;
+  height: 18px;
+  font-size: 15px;
+  /* padding: 18px; */
+  border: 1px solid #ddd;
+  border-color: #ddd;
+  margin-left: auto;
+  margin-top: 1vh;
+  margin-left: 52.8%;
+  position: relative;
+}

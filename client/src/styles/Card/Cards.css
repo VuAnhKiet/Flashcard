@@ -1,0 +1,40 @@
+.flashcards {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 0 10px;
+    width: 100%;
+    margin-top: 30px;
+    background: linear-gradient(to right, #a2c2e8, #d9e8c7);
+    overflow: hidden;
+}
+
+.flashcards::-webkit-scrollbar {
+    display: none;
+}
+
+.flashcard {
+    width: 360px;
+    word-wrap: break-word;
+    height: 200px;
+    margin: 10px;
+    background: #FAF0E6;
+    box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.word {
+    border-top: 1px solid red;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.defination {
+    color: red;
+    text-align: center;
+    border-top: 1px solid red;
+    padding: 15px;
+    margin-top: 30px;
+}
