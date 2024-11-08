@@ -101,7 +101,7 @@ export const sendMail = async (req, res) => {
     });
 
     const token = randomStrings.generate(32);
-    const resetLink = `http://localhost:3000/reset-password/${token}`;
+    const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
 
     await Token.create({
         user_id: user.id,
