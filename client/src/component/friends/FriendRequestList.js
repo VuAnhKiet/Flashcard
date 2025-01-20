@@ -15,10 +15,12 @@ function FriendRequestList({ accept, deny, request }) {
             <ul className="request-list">
                 {request.map((value, key) => {
                     return (
-                        <li>
+                        <li className='friend-request'>
                             <span><FriendRequest value={value.fullname} id={value.id} /></span>
-                            <button className="approve-btn" onClick={() => { Accepted(value.id) }}>Approve</button>
-                            <button className="deny-btn" onClick={() => { Deny(value.id) }}>Deny</button>
+                            <div className='approve-deny'>
+                                <button className="approve-btn" onClick={() => { Accepted(value.id) }}>Approve</button>
+                                <button className="deny-btn" onClick={() => { Deny(value.id) }}>Deny</button>
+                            </div>
                         </li>
                     )
                 })}
