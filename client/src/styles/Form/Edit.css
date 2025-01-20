@@ -25,6 +25,10 @@
     padding-left: 3px;
 }
 
+.edit-card {
+    padding-bottom: 20px;
+}
+
 .edit-box #save {
     margin-left: 25%;
     width: 50%;

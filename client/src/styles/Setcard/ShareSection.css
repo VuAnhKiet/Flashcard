@@ -4,8 +4,10 @@
 }
 
 .shareholder-section {
-    width: 25%;
-    height: 62vh;
+    width: 100%;
+    max-width: 25%;
+    max-height: 60%;
+    height: 100%;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;

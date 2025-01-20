@@ -63,7 +63,7 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    
+
 }
 
 .friend-list li,
@@ -119,15 +119,24 @@
 
 .deny-btn:hover {
     background-color: #c82333;
+    display: flex;
 }
 
-.unfriend-btn{
-    display: none; 
+.unfriend-btn {
+    display: none;
     position: absolute;
     right: 10px;
-    top: 50%; 
+    top: 50%;
     transform: translateY(-50%);
     background-color: #dc3545;
+}
+
+.approve-deny {
+    display: none;
+}
+
+.friend-request:hover .approve-deny {
+    display: flex;
 }
 
 .friend-list li:hover .unfriend-btn {
