@@ -5,7 +5,7 @@ function SetCardList({ setcardProps }) {
   const { cardstheme, auth } = setcardProps;
   if (auth) {
     return (
-      <div className='list-set'>
+      <div className='new-card-container' id="new-card-container">
         {
           cardstheme.map((value, key) => {
             return (

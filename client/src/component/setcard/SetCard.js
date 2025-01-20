@@ -8,24 +8,27 @@ function SetCard({ setcardProps }) {
     let navigate = useNavigate();
     const [newname, setNewname] = useState(value.name)
     return (
-        <div className='setofcards' draggable onDragStart={() => drag(value)}>
+        <div className='new-card' draggable onDragStart={() => drag(value)}>
             <ul className='display'>
-                {hideset && (
-                    <button className='deletesetcard' onClick={(e) => { del(e, value.id) }}>
-                        X
-                    </button>)}
                 {hideset ? (
                     <li key={value.id} onClick={() => navigate(`/setofcards/${value.id}`)}>
+                        <h3 className='new-card-title'>
                         {newname}
+                        </h3>
+                        <div className='card-actions'>
                         <button
-                            className='editsetcards'
+                            className='card-action-btn edit-btn'
                             onClick={(e) => {
                                 e.stopPropagation();
                                 setHideset(!hideset);
                             }}
                         >
-                            {hideset ? <>&#128393;</> : null}
+                            {hideset ? <>Edit</> : null}
                         </button>
+                        <button className='card-action-btn delete-btn' onClick={(e) => { del(e, value.id) }} >
+                            Delete
+                        </button>
+                        </div>
                     </li>
                 ) :
                     <EditSetCards

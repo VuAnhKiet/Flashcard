@@ -20,15 +20,15 @@ function EditSetCards({ name, id, hide, setHide, setName, edit }) {
     };
 
     return (
-        <div className="">
-            <div className="edit-set-box">
+        <div className="edit-card">
+            <div className="new-card">
                 <Formik
                     initialValues={initialValues}
                     onSubmit={onSubmit}
                     validationSchema={validationSchema}
                 >
                     <Form>
-                        <label>Name: </label>
+                        <label>Edit: </label>
                         <ErrorMessage name="name" component="span" />
 
                         <Field

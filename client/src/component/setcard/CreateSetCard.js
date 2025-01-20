@@ -123,17 +123,19 @@ function CreateSetCard({share}) {
   };
 
   return (
-    <div className="Set-card">
+    <div className="">
       <FriendProfile share={share} />
       {auth ? <ShareSection shareProps={shareProps} /> : <div />}
-      {auth ? <SetCardSearch searchProps={searchProps} /> : <div />}
+      
       <Modal
         isOpen={isOpen}
         onConfirm={handleConfirmDelete}
         onCancel={handleCancelDelete}
       />
-      <div className="create-box">
-        <h2>Create Set Card</h2>
+      <div className="form-and-cards">
+        {auth ? <SetCardSearch searchProps={searchProps} /> : <div />}
+        <div className="form-card">
+        <h2 className="form-title">✨ Create Your Set ✨</h2>
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
@@ -141,11 +143,18 @@ function CreateSetCard({share}) {
           validateOnBlur={false}  
           validateOnChange={false}  
         >
-          <Form>
-            <label>Name: </label>
-            <ErrorMessage name="name" component="span" />
-            <Field autoComplete="off" id="input" name="name" />
-            <button className="create" type="submit">
+          <Form id="create-set-form">   
+            <label htmlFor="set-name" className="form-label">Set name: 
+              <ErrorMessage name="name" component="span" id="errormsg" />
+            </label>    
+            <Field 
+            autoComplete="off" 
+            id="set-name" 
+            name="name" 
+            className="form-input" 
+            placeholder="Enter a name for your set"
+            />
+            <button className="form-btn" type="submit">
               Create
             </button>
           </Form>
@@ -153,6 +162,7 @@ function CreateSetCard({share}) {
       </div>
       {message && <div className="no-result">{message}</div>}
       <SetCardList setcardProps={setcardProps} />
+      </div>
     </div>
   );
 }
