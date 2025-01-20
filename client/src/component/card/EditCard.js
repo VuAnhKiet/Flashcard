@@ -34,8 +34,8 @@ function EditCard({ cardId, word, setword, definition, setdef, state, setState }
         resetForm();
     };
     return (
-        <div className="" onClick={(e) => { e.stopPropagation(); }}>
-            <div className="edit-box">
+        <div className="edit-card" onClick={(e) => { e.stopPropagation(); }}>
+            <div className="new-card">
 
                 <Formik
                     initialValues={initialValues}

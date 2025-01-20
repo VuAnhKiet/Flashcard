@@ -24,7 +24,7 @@ function CreateCard() {
     };
 
     const validationSchema = Yup.object().shape({
-        word: Yup.string().min(3).required("You must input a word"),
+        word: Yup.string().min(3).max(15).required("You must input a word"),
         definition: Yup.string().min(3).max(15).required("You must input a definition"),
     });
 
@@ -84,17 +84,18 @@ function CreateCard() {
     }
 
     return (
-        <div className="">
-            {auth ? (
-                <SearchCard searchProps={searchProps} />) : (<div />)
-            }
+        <div className="form-and-card search-create-form">
             <Modal
                 isOpen={isOpen}
                 onConfirm={handleConfirmDelete}
                 onCancel={handleCancelDelete}
             />
-            <div className="create-box">
-                <h2>Create Flashcards</h2>
+            <div className="">
+            {auth ? (
+                <SearchCard searchProps={searchProps} />) : (<div />)
+            }
+            <div className="form-card create-form">
+                <h2 className="form-title" >Create Flashcards</h2>
                 <Formik
                     initialValues={initialValues}
                     onSubmit={onSubmit}
@@ -102,29 +103,38 @@ function CreateCard() {
                     validateOnBlur={false}  
                     validateOnChange={false}    
                 >{({ handleChange, setFieldValue }) => (
-                    <Form>
-                        <label>Word: </label>
-                        <ErrorMessage name="word" component="span" />
+                    <Form id="create-set-form">
+                        <label htmlFor="set-name" className="form-label" >Word:
+                        <ErrorMessage name="word" component="span" id="errormsg" />
+                        </label>
                         <Field
                             autoComplete="off"
                             id="input"
                             name="word"
+                            className="form-input"
+                            placeHolder='Enter a word...'
                             onChange={e => setFieldValue('word', e.target.value)}
                         />
-                        <label>Definition: </label>
-                        <ErrorMessage name="definition" component="span" />
+                        <label htmlFor="set-name" className="form-label">Definition:
+                        <ErrorMessage name="definition" component="span" id="errormsg" />
+                        </label>
                         <Field
                             autoComplete="off"
                             id="input"
                             name="definition"
+                            className="form-input"
+                            placeHolder='Enter a definition...'
                             onChange={(e) => { setFieldValue("definition", e.target.value); }}
                         />
-                        <button className="create" type="submit">Create</button>
+                        <button className="form-btn" type="submit">Create</button>
                     </Form>)}
                 </Formik>
             </div>
-            {message && <div className="no-result">{message}</div>}
-            <div><CardById cardProps={cardProps} /></div>
+            </div>
+            <div>
+                <CardById cardProps={cardProps} />
+                {message && <div className="no-result">{message}</div>}
+            </div>
         </div>
     );
 }

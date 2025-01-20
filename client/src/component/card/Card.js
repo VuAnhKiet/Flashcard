@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import EditCard from "./EditCard";
 
 function Card({ card, del, edit }) {
@@ -19,25 +19,39 @@ function Card({ card, del, edit }) {
     };
 
     return (
-        <div className='flashcard' onClick={() => { setFlip(!flip) }}>
-            <button className='delete' onClick={(e) => { del(e, card.id); }}>
-                X
-            </button>
+        <div className='new-card card-container card-content' onClick={() => { setFlip(!flip) }}>
             {hide ? (
-                flip ? <div className='word'>{newword}</div>
-                    : <div className='defination'>{newdef}</div>) :
+                flip ?
+                    <div className='word'>{newword}</div>
+                    :
+                    <div className='defination'>{newdef}</div>
+            )
+                :
                 <EditCard
                     {...editCardProps}
                 />
             }
-            <button className='editcard'
-                onClick={(e) => {
-                    edit(e, card.id);
-                    setHide(!hide);
-                }}
-            >
-                {hide ? <>Edit</> : null}
-            </button>
+            <div className="card-actions">
+                {hide && (
+                    <>
+                        <button
+                            className="card-action-btn delete-btn"
+                            onClick={(e) => { del(e, card.id); }}
+                        >
+                            Delete
+                        </button>
+                        <button
+                            className="card-action-btn edit-btn"
+                            onClick={(e) => {
+                                edit(e, card.id);
+                                setHide(false);
+                            }}
+                        >
+                            Edit
+                        </button>
+                    </>
+                )}
+            </div>
         </div>
     );
 }
