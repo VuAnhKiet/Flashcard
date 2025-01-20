@@ -26,7 +26,7 @@ function ShareSection({ shareProps }) {
     };
     
     return (
-        <div className="share-container">
+        <div className="">
             <Modal
                 isOpen={isOpen}
                 onConfirm={handleConfirmDelete}
