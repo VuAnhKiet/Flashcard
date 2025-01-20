@@ -28,7 +28,7 @@ export const useCards = (groupCardId, auth) => {
     const addCard = async (data) => {
         try {
             const newCard = await createCard(data);
-            setListOfCards((prevCards) => [...prevCards, newCard]);
+            setListOfCards((prevCards) => [newCard,...prevCards]);
         } catch (err) {
             console.error("Error creating card:", err);
         }
