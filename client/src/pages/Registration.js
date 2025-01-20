@@ -17,7 +17,7 @@ function Registration() {
 
   const validationSchema = Yup.object().shape({
     fullname: Yup.string().required('You must input a name'),
-    password: Yup.string().required('You must input a password'),
+    password: Yup.string().min(8).required('You must input a password'),
     email: Yup.string().required('You must input an email'),
   });
 
@@ -26,7 +26,7 @@ function Registration() {
     if (response.error) {
       toast.error(response.error);
     } else {
-      toast.success("Registration successful!")
+      toast.success("Registration successful!");
       resetForm();
       navigate('/login');
     }
@@ -35,45 +35,56 @@ function Registration() {
   return (
     <div className="regist-body">
       <div className="regist-main">
-        <h1 className="h1">REGISTER</h1>
+        <h1 className="regist-title">REGISTER</h1>
 
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
+          validateOnBlur={false}  
+          validateOnChange={false}
           validationSchema={validationSchema}
         >
           <Form>
-            <label className="reglabel">Username: </label>
-            <ErrorMessage name="fullname" component="span" className="span" />
-            <Field
-              autoComplete="off"
-              id="input"
-              name="fullname"
-              className="input"
-              placeholder="Username"
-            />
+            <div className="input-group">
+              <label className="reglabel">Username:
+              <ErrorMessage name="fullname" component="span" className="error-message" />
+              </label>
+              <Field
+                autoComplete="off"
+                id="input"
+                name="fullname"
+                className="input"
+                placeholder="Username"
+              />
+            </div>
 
-            <label className="reglabel">Password: </label>
-            <ErrorMessage name="password" component="span" className="span" />
-            <Field
-              autoComplete="off"
-              id="input"
-              type="password"
-              name="password"
-              className="input"
-              placeholder="New password"
-            />
+            <div className="input-group">
+              <label className="reglabel">Password:
+              <ErrorMessage name="password" component="span" className="error-message" />
+              </label>
+              <Field
+                autoComplete="off"
+                id="input"
+                type="password"
+                name="password"
+                className="input"
+                placeholder="New password"
+              />
+            </div>
 
-            <label className="reglabel">Email: </label>
-            <ErrorMessage name="email" component="span" className="span" />
-            <Field
-              autoComplete="off"
-              type="email"
-              id="input"
-              name="email"
-              className="input"
-              placeholder="Email address"
-            />
+            <div className="input-group">
+              <label className="reglabel">Email:
+              <ErrorMessage name="email" component="span" className="error-message" />
+              </label>
+              <Field
+                autoComplete="off"
+                type="email"
+                id="input"
+                name="email"
+                className="input"
+                placeholder="Email address"
+              />
+            </div>
 
             <div className="wrap">
               <button className="button" type="submit">
@@ -85,7 +96,7 @@ function Registration() {
 
         <p>
           Already have an account?{' '}
-          <Link style={{ textDecoration: 'none' }} to="/login">
+          <Link className="register-link" to="/login">
             Back to login
           </Link>
         </p>

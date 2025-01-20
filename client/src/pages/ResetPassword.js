@@ -12,46 +12,54 @@ function ResetPassword() {
     const Send = async (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
-            toast.error("Password do not match, please try again");
+            toast.error("Passwords do not match, please try again.");
             return;
         }
-        await ResetPassword(token)
-        toast.success('Reset Password succeed!');
-        navigate('/login');
+        const response = await ResetPassword(token, { password });
+        if (response.error) {
+            toast.error(response.error);
+        } else {
+            toast.success('Password reset successful!');
+            navigate('/login');
+        }
     };
 
     return (
-        <div className="forgot-pass-container">
-            <div className="forgot-pass-body">
-                <div className="forgot-pass-main">
+        <div className="reset-pass-container">
+            <div className="reset-pass-body">
+                <div className="reset-pass-main">
                     <h1 className="h1">Reset Password</h1>
 
-                    <form id="forgotPasswordForm" onSubmit={Send}>
-                        <label className="label" htmlFor="email">New password:</label>
-                        <input
-                            className="input"
-                            type="password"
-                            id="email"
-                            name="email"
-                            placeholder="Your new password"
-                            required
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-
-                        <label className="label" htmlFor="email">Confirm password:</label>
-
-                        <input
-                            className="input"
-                            type="password"
-                            id="email"
-                            name="email"
-                            placeholder="Confirm password"
-                            required
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                        />
+                    <form id="resetPasswordForm" onSubmit={Send}>
                         
+                        <div className="input-group">
+                            <label className="reset-label" htmlFor="password">New password:</label>
+                            <input
+                                className="input"
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your new password"
+                                required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="input-group">
+                            <label className="reset-label" htmlFor="confirmPassword">Confirm password:</label>
+                            <input
+                                className="input"
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Confirm your password"
+                                required
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
+                        </div>
+
                         <div className="wrap">
                             <button className="button" type="submit">
                                 Submit
@@ -61,7 +69,7 @@ function ResetPassword() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default ResetPassword
+export default ResetPassword;

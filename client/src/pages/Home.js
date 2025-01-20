@@ -17,7 +17,8 @@ function Home() {
   const share = useShare(auth);  // Custom hook to handle sharing
 
   return (
-    <div>
+    
+    <div className='main-content'>
       <CreateSetCard share={share} />
       {auth ? <Friends share={share} /> : <div />}
     </div>

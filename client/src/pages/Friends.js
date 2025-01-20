@@ -48,7 +48,6 @@ function Friends({ share }) {
         onConfirm={handleConfirmDelete}
         onCancel={handleCancelDelete}
       />
-
       <div className="friend-list-container">
         <div className="friend-list-container-content">
           

@@ -8,33 +8,27 @@ function NavBar({ Logout, auth }) {
     const navigate = useNavigate();
 
     return (
-        <div>
-            <div className="container">
-                <div className="nav">
-                    <a className="homebtn" href="/">
-                        <h1>Flashcards</h1>
+            <div className="app">
+                <header className="navbar">
+                    <a className="" href="/">
+                        <h1 className='logo'>📘 Flashcards</h1>
                     </a>
 
                     {auth && <FriendsSearch />}
-
-                    <div className="buttonss">
-                        <button className="navbut" onClick={() => navigate('/')}>
-                            Home
-                        </button>
-
+                    
+                    <nav>
                         {!auth ? (
-                            <button className="navbut" onClick={() => navigate('/login')}>
+                            <button className="nav-btn" onClick={() => navigate('/login')}>
                                 Login
                             </button>
                         ) : (
-                            <button className="navbut" onClick={Logout}>
+                            <button className="nav-btn" onClick={Logout}>
                                 Logout
                             </button>
                         )}
-                    </div>
-                </div>
+                    </nav>
+                </header>
             </div>
-        </div>
     );
 }
 
