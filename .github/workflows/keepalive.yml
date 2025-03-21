@@ -2,7 +2,7 @@ name: Keep Backend & Supabase Alive
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Runs every 5 minutes (UTC)
+    - cron: '*/5 * * * *'  # Runs every 5 minutes
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
@@ -10,11 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install @supabase/supabase-js
+
       - name: Keep Render Backend Alive
         env:
           BACKEND_URL: ${{ secrets.BACKEND_URL }}
         run: |
-          curl -s --fail "$BACKEND_URL" && echo "Backend is alive" || echo "Backend ping failed"
+          curl -s --fail "$BACKEND_URL" || echo "Backend ping failed"
 
       - name: Keep Supabase Database Alive
         env:
@@ -22,15 +33,16 @@ jobs:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: |
           node -e "
-          (async () => {
-            const { createClient } = require('@supabase/supabase-js');
-            const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+          const { createClient } = require('@supabase/supabase-js');
+          const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+          async function pingSupabase() {
             try {
-              const { data, error } = await supabase.from('Users').select('id').limit(1);
+              const { error } = await supabase.from('Users').select('id').limit(1);
               if (error) throw error;
-              console.log('Supabase Ping Success:', data);
+              console.log('Supabase is active');
             } catch (err) {
-              console.error('Supabase Ping Failed:', err);
+              console.error('Supabase ping failed:', err.message);
             }
-          })();
+          }
+          pingSupabase();
           "
